@@ -1,5 +1,6 @@
 <template>
     <div class="col-4 p-1">
+        <router-link :to="{name: 'BlogDetails', params: {id: blogData.id}}">
       <div class="row d-flex">
         <div class="col-3 card">
           <h6>{{blogData.creator.name}}</h6>
@@ -8,10 +9,9 @@
         <div class="card col-8">
         <p>{{blogData.title}}</p>
         <img :src="blogData.imgUrl" alt="" class="card-img">
-        <p class="text-center">{{blogData.body}}</p>
         </div>
-      
       </div>
+        </router-link>
     </div>
 </template>
 
@@ -29,6 +29,7 @@ export default {
 <style scoped>
 img{
   border-radius: 50%;
+  max-height: 15vh;
 }
 
 </style>

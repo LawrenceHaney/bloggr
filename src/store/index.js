@@ -34,7 +34,10 @@ export default new Vuex.Store({
     },
     removeBlog(state, id){
       state.blogs = state.blogs.filter(b => b.id != id)
-    }
+    },
+    deleteCom(state, id){
+      state.activecontent = state.activecontent.filter(c => c.id != id)
+    },
   },
   actions: {
     async getProfile({ commit }) {
@@ -92,7 +95,8 @@ export default new Vuex.Store({
     },
     async createCom({commit}, com){
       try {
-        let res = await api.post("comments", [...this.state.activecontent, com])
+        let res = await api.post("comments", com)
+        commit("setActiveContent", [...this.state.activecontent, com])
       } catch (error) {
         
       }
@@ -107,5 +111,14 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async deleteCom({commit}, id) {
+      try {
+        await api.delete('comments/' + id)
+        commit('deleteCom', id)
+      } catch (error) {
+        console.error(error)
+        
+      }
+    }
   },
 });

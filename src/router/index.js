@@ -6,6 +6,7 @@ import Home from "../pages/Home.vue";
 import Profile from "../pages/Profile.vue";
 import { authGuard } from "@bcwdev/auth0-vue";
 import BlogDetails from "../pages/BlogDetails.vue";
+import CreatePost from "../pages/CreatePost.vue";
 
 Vue.use(VueRouter);
 
@@ -25,6 +26,12 @@ const routes = [
     path: "/:id",
     name: 'BlogDetails',
     component: BlogDetails
+  },
+  {
+    path: "/new",
+    name: "NewPost",
+    component: CreatePost,
+    beforeEnter: authGuard,
   }
 ];
 

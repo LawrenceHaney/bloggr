@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Blog from "../components/post"
+import Blog from "../components/post.vue"
 
 export default {
   name: "home",

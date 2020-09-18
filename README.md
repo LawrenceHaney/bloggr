@@ -48,10 +48,10 @@ Once you have the appropriate functionality, add a theme the site in whatever wa
 
 #### Visualization
 
-- [ ] `Home page` displays all published blogs (response from a standard get request)
-- [ ] Blogs on the `home page` are listed as title and author
-- [ ] Clicking the link users are taken to a `blog page`
-- [ ] Refreshing while on the `blog page` does not renavigate the user, and the blog still shows its contents
+- [$] `Home page` displays all published blogs (response from a standard get request)
+- [$] Blogs on the `home page` are listed as title and author
+- [$] Clicking the link users are taken to a `blog page`
+- [$] Refreshing while on the `blog page` does not renavigate the user, and the blog still shows its contents
 - [ ] The `blog page` shows all comments for that blog
 
 #### Functionality

@@ -21,6 +21,11 @@ export default {
   props:{
     blogData:
     {type: Object, required: true}
+  },
+  computed:{
+  },
+  methods:{
+
   }
 
 }

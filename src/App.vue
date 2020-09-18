@@ -21,6 +21,9 @@ export default {
   components: {
     Navbar,
   },
+  mounted(){
+    this.$store.dispatch("getBlogs")
+  }
 };
 </script>
 <style lang="scss">

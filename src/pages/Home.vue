@@ -1,11 +1,23 @@
 <template>
-  <div class="home">
-    <h1>Welcome</h1>
+  <div class="home container-fluid">
+    <div class="row bg-dark">
+      <blog v-for="blog in blogs" :key="blog.id" blogData="blog" />
+    </div>
   </div>
 </template>
 
 <script>
+import blog from "../components/post"
+
 export default {
   name: "home",
+  mounted() {
+    this.$store.dispatch("getBlogs")
+  },
+  computed: {
+    blogs(){
+      return this.$store.state.blogs
+    }
+  }
 };
 </script>

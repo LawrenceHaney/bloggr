@@ -1,11 +1,14 @@
 <template>
-<div class="fluid-contaier">
-  <div class="about text-center card">
+<div class="container-fluid">
+  <div class="about text-center row justify-content-center">
+    <div class="card col-10">
+
     <h1>Welcome {{ profile.name }}</h1>
     <img class="rounded" :src="profile.picture" alt="" />
     <p>{{ profile.email }}</p>
+    </div>
   </div>
-  <div class="row">
+  <div class="row justify-content-around">
     <blog v-for="blog in userblogs" :key="blog.id" :blogData="blog" />
   </div>
 </div>

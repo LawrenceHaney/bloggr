@@ -11,7 +11,8 @@
 export default {
   name: "blog",
   props:{
-    type: Object, required: true
+    blogData:
+    {type: Object, required: true}
   }
 
 }

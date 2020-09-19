@@ -11,7 +11,8 @@ export default new Vuex.Store({
     blogs: [],
     activeBlog:  {},
     userblogs: [],
-    activecontent: []
+    activecontent: [],
+    isedit: false,
   },
   mutations: {
     setProfile(state, profile) {
@@ -98,7 +99,7 @@ export default new Vuex.Store({
         let res = await api.post("comments", com)
         commit("setActiveContent", [...this.state.activecontent, com])
       } catch (error) {
-        
+        console.error(error)
       }
     },
     async deletePost ({commit}, id) {
@@ -118,6 +119,13 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error)
         
+      }
+    }, async editBlog({commit}, payload){
+      try {
+        let res = await api.put("blogs/"+payload.id, payload)
+        commit("setActiveBlog", res.data)
+      } catch (error) {
+        console.error(error)
       }
     }
   },

@@ -1,7 +1,7 @@
 <template>
 <div class="container-fluid background">
   <div class="row justify-content-center">
-    <div class="bg-warning content-shadow col-2 text-center ">
+    <div class="bg-warning content-shadow col-2 text-center sidebar">
 
     <h1>Welcome {{ profile.name }}</h1>
     <img class="profile" :src="profile.picture" alt="" />
@@ -51,4 +51,7 @@ export default {
 </script>
 
 <style scoped>
+.sidebar{
+  position: sticky;
+}
 </style>

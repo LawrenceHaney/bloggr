@@ -19,8 +19,8 @@
           </h4>
         </div>
         </div>
-        <img :src="blog.imgUrl" alt="" class="content-shadow">
         <h1>{{blog.title}}</h1>
+        <img :src="blog.imgUrl" alt="" class="content-shadow text-wrap my-1">
         <div class="text-center align-self-center flex-grow">
           <p>{{blog.body}}</p>
         </div>

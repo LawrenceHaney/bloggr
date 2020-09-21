@@ -63,7 +63,6 @@ export default {
         this.newPost.creatorEmail = user.email
         this.$store.dispatch("createPost", this.newPost)
       } else {window.alert("You must log in first")}
-      
     }
   },
   computed:{

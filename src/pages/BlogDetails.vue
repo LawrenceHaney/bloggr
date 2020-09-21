@@ -98,15 +98,19 @@ export default {
   },
   methods:{
     createCom(){
-      this.newCom.blog= this.$route.params.id
-      this.$store.dispatch("createCom", this.newCom)
+            if(this.$auth.isAuthenticated){
+        this.newCom.blog= this.$route.params.id
+        this.$store.dispatch("createCom", this.newCom)
+      } else {window.alert("You must log in first")}
     },
     deletePost(){
-      if(window.confirm("Delete for always?")){
-        this.$store.dispatch("deletePost", this.$route.params.id)
+            if(this.$auth.isAuthenticated){
+              if(window.confirm("Delete for always?")){
+                this.$store.dispatch("deletePost", this.$route.params.id)
       }else{
         return
       }
+      } else {window.alert("You must log in first")}
     },
     toggle(){
       this.isedit = !this.isedit

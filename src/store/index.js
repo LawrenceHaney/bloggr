@@ -104,7 +104,9 @@ export default new Vuex.Store({
     async createCom({commit}, com){
       try {
         let res = await api.post("comments", com)
+        res.data.creator = this.state.profile
         commit("setActiveContent", [...this.state.activecontent, res.data])
+        console.log(res)
       } catch (error) {
         console.error(error)
       }

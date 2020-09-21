@@ -3,7 +3,7 @@
         <router-link :to="{name: 'BlogDetails', params: {id: blogData.id}}">
       <div class="row d-flex">
         <div class="col-3 p-2 text-center bg-warning d-flex flex-column justify-content-center text-pop">
-          <h3>{{blogData.creator.name}}</h3>
+          <h6>{{blogData.creator.name}}</h6>
           <img :src="blogData.creator.picture" alt="" class="profile align-self-center">
         </div>
         <div class=" col-8 p-2 text-pop d-flex flex-column justify-content-center">

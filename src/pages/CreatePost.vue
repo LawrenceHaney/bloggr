@@ -1,11 +1,12 @@
 <template>
   <div class="container-fluid background">
-    <div class="row">
-      <div class="col-3">
-      <h1>profile data here</h1>
+    <div class="row justify-content-center my-2">
+      <div class="col-2 bg-warning text-center p-1">
+      <h1>{{user.name}}</h1>
+      <img :src="user.picture" alt="" class="profile">
       </div>
-      <div class="col-9">
-        <div class="card bg-seconday">
+      <div class="col-8 bg-primary content-shadow p-2">
+        <div class="text-pop">
           <form @submit.prevent="createPost" class="form">
             <div class="form-group p-1">
               <label class="mr-1" for="title">title</label>
@@ -19,7 +20,7 @@
               />
               </div>
               <div class="form-group p-1">
-              <label class="mr-1" for="img">Img</label>
+              <label class="mr-1" for="img">Image</label>
               <input
               v-model="newPost.imgUrl"
               type="Url"
@@ -40,7 +41,7 @@
               placeholder="Body..."
               />
           </div>
-          <button type="submit" class="btn btn-outline-primary">New Post</button>
+          <button type="submit" class="btn btn-outline-warning col-12">New Post</button>
           </form>
         </div>
       </div>
@@ -58,8 +59,16 @@ export default {
   },
   methods: {
     createPost(){
-      this.$store.dispatch("createPost", this.newPost)
+      if(this.$auth.isAuthenticated){
+        this.newPost.creatorEmail = user.email
+        this.$store.dispatch("createPost", this.newPost)
+      } else {window.alert("You must log in first")}
       
+    }
+  },
+  computed:{
+    user(){
+      return this.$auth.userInfo
     }
   }
 

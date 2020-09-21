@@ -1,32 +1,36 @@
 <template>
   <div class="container-fluid background">
-    <div class="row my-4">
-      <div class="col-4 bg-dark">
-        <div class="card bg-dark text-light">
-          <img :src="blog.creator.picture" alt="">
-          <p>{{blog.creator.name}}</p>
+    <div class="row justify-content-center">
+      <div class="col-11 bg-primary content-shadow my-3">
+      <div class="row">
+
+      <div class="col-4 bg-warning">
+        <div class="text-center p-2">
+          <h6>{{blog.creator.name}}</h6>
+          <img :src="blog.creator.picture" alt="" class="profile m-1">
         </div>
       </div>
-      <div v-if="isedit == false" class="col-8 bg-light">
+      <div v-if="isedit == false" class="col-8 text-pop p-2">
         <div class="row justify-content-end">
-        <div class="card col-1 bg-dark text-light m-1" v-if="profile.id == blog.creator.id">
+        <div class=" bg-dark rounded-pill col-1 text-light m-1" v-if="profile.id == blog.creator.id">
           <h4 class="text-center">
-            <i class="m-1 fa fa-pen-square" aria-hidden="true" @click="toggle"></i>
             <i  class="m-1 fa fa-trash" aria-hidden="true" @click="deletePost"></i>
+            <i class="m-1 fa fa-pen-square" aria-hidden="true" @click="toggle"></i>
           </h4>
         </div>
         </div>
+        <img :src="blog.imgUrl" alt="" class="content-shadow">
         <h1>{{blog.title}}</h1>
-        <div class="card">
+        <div class="text-center align-self-center flex-grow">
           <p>{{blog.body}}</p>
         </div>
       </div>
-      <div v-else class="col-8 bg-light">
+      <div v-else class="col-8 text-pop">
         <div class="row justify-content-end">
-        <div class="card col-1 bg-dark text-light m-1" v-if="profile.id == blog.creator.id">
+        <div class="col-1 bg-dark rounded-pill text-light m-1" v-if="profile.id == blog.creator.id">
           <h4 class="text-center">
-            <i class="m-1 fa fa-pen-square" aria-hidden="true" @click="toggle"></i>
             <i  class="m-1 fa fa-trash" aria-hidden="true" @click="deletePost"></i>
+            <i class="m-1 fa fa-pen-square" aria-hidden="true" @click="toggle"></i>
           </h4>
         </div>
         </div>
@@ -38,8 +42,14 @@
         </div>
         </form>
       </div>
+      </div>
+      </div>
     </div>
-    <div class="row">
+    <div v-if="coms.length > 0" class="row justify-content-around">
+      <com v-for="com in coms" :key="com.id" :comData="com"/>
+    </div>
+    <div v-if="this.$auth.isAuthenticated" class="row justify-content-center ">
+      <div class="col-6 bg-primary text-pop content-shadow p-5 m-2">
       <form @submit.prevent="createCom" class="form">
               <div class="form-group p-1">
               <label class="mr-1" for="body">Leave a comment</label>
@@ -52,11 +62,9 @@
               placeholder="here..."
               />
           </div>
-          <button type="submit" class="btn btn-outline-primary">Submit</button>
+          <button type="submit" class="btn btn-outline-warning">Submit</button>
           </form>
-    </div>
-    <div v-if="coms.length > 0" class="row">
-      <com v-for="com in coms" :key="com.id" :comData="com"/>
+      </div>
     </div>
   </div>
 </template>
@@ -119,8 +127,5 @@ export default {
 </script>
 
 <style scoped>
-img{
-  border-radius: 50%;
-  max-width: 100%;
-}
+
 </style>

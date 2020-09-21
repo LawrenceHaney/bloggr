@@ -1,21 +1,25 @@
 <template>
-<div class="container-fluid">
-  <div class="about text-center row justify-content-center">
-    <div class="card col-10">
+<div class="container-fluid background">
+  <div class="row justify-content-center">
+    <div class="bg-warning content-shadow col-2 text-center ">
 
     <h1>Welcome {{ profile.name }}</h1>
-    <img class="rounded" :src="profile.picture" alt="" />
+    <img class="profile" :src="profile.picture" alt="" />
     <p>{{ profile.email }}</p>
     </div>
-  </div>
+  <div class="col-10">
   <div class="row justify-content-around">
     <blog v-for="blog in userblogs" :key="blog.id" :blogData="blog" />
+    <com v-for="com in coms" :key="com.id" :comData="com"/>
+  </div>
+  </div>
   </div>
 </div>
 </template>
 
 <script>
 import Blog from "../components/post.vue"
+import Com from "../components/comment.vue"
 export default {
   name: "Profile",
   computed: {
@@ -24,6 +28,9 @@ export default {
     },
     userblogs(){
       return this.$store.state.userblogs
+    },
+    coms(){
+      return this.$store.state.activecontent
     }
   },
   data(){
@@ -33,15 +40,15 @@ export default {
   },
   mounted(){
       this.$store.dispatch("getUserBlogs")
+      this.$store.dispatch("getProfile")
+      this.$store.dispatch("getUserCom", this.$auth.userInfo.id)
   },
   components:{
-    Blog
+    Blog,
+    Com
   }
 };
 </script>
 
 <style scoped>
-img {
-  max-width: 100px;
-}
 </style>

@@ -4,3 +4,41 @@
   border-color: darken($color: $primary, $amount: 10);
   border-width: medium;
 }
+
+.background{
+  background-image: url("https://images.unsplash.com/photo-1584967918940-a7d51b064268?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-grow: 1;
+}
+
+#app{
+margin: 0;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+.content-shadow{
+  box-shadow: .5em .5em 0px;
+}
+
+.text-pop{
+  color: var(--light);
+  text-shadow: .1em .1em 0px var(--dark);
+}
+
+.pop {
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+.pop:hover {
+  transform: scale(1.05);
+}
+.profile{
+  border-radius: 50%;
+  max-height: 15vh;
+  box-shadow: .2em .2em .1em var(--dark);
+}

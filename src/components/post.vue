@@ -1,12 +1,12 @@
 <template>
-    <div class="col-4 p-1">
+    <div class="col-8 p-1 bg-primary my-3 content-shadow pop">
         <router-link :to="{name: 'BlogDetails', params: {id: blogData.id}}">
       <div class="row d-flex">
-        <div class="col-3 card">
+        <div class="col-3 p-2 text-center bg-warning">
           <h6>{{blogData.creator.name}}</h6>
-          <img :src="blogData.creator.picture" alt="">
+          <img :src="blogData.creator.picture" alt="" class="profile">
         </div>
-        <div class="card col-8">
+        <div class=" col-8 p-2 text-pop">
         <p>{{blogData.title}}</p>
         <img :src="blogData.imgUrl" alt="" class="card-img">
         </div>
@@ -32,9 +32,7 @@ export default {
 </script>
 
 <style scoped>
-img{
-  border-radius: 50%;
-  max-height: 15vh;
+.pop:hover {
+  transform: scale(1.05);
 }
-
 </style>

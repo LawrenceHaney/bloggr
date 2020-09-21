@@ -12,7 +12,6 @@ export default new Vuex.Store({
     activeBlog:  {},
     userblogs: [],
     activecontent: [],
-    isedit: false,
   },
   mutations: {
     setProfile(state, profile) {
@@ -30,8 +29,8 @@ export default new Vuex.Store({
     setUserBlogs(state, blogs){
       state.userblogs = blogs
     },
-    setActiveContent(state, com){
-      state.activecontent = com
+    setActiveContent(state, coms){
+      state.activecontent = coms
     },
     removeBlog(state, id){
       state.blogs = state.blogs.filter(b => b.id != id)
@@ -94,10 +93,18 @@ export default new Vuex.Store({
         
       }
     },
+    async getUserCom({commit}){
+      try {
+        let res = await api.get('profile/comments/')
+        commit("setActiveContent", res.data)
+      } catch (error) {
+        
+      }
+    },
     async createCom({commit}, com){
       try {
         let res = await api.post("comments", com)
-        commit("setActiveContent", [...this.state.activecontent, com])
+        commit("setActiveContent", [...this.state.activecontent, res.data])
       } catch (error) {
         console.error(error)
       }
@@ -126,6 +133,15 @@ export default new Vuex.Store({
         commit("setActiveBlog", res.data)
       } catch (error) {
         console.error(error)
+      }
+    },
+    async editCom({commit}, payload){
+      try {
+        let res = await api.put('comments/' + payload.id, payload)
+        console.log("HI got:", res)
+        commit("setActiveContent", this.state.activecontent)
+      } catch (error) {
+        
       }
     }
   },

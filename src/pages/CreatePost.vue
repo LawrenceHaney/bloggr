@@ -1,5 +1,5 @@
 <template>
-  <div class="fluid-container">
+  <div class="container-fluid background">
     <div class="row">
       <div class="col-3">
       <h1>profile data here</h1>

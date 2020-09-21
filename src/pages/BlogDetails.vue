@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid background">
     <div class="row my-4">
       <div class="col-4 bg-dark">
         <div class="card bg-dark text-light">
@@ -41,20 +41,18 @@
     </div>
     <div class="row">
       <form @submit.prevent="createCom" class="form">
-            <div class="form-group p-1">
-              </div>
               <div class="form-group p-1">
-              <label class="mr-1" for="body">Body</label>
+              <label class="mr-1" for="body">Leave a comment</label>
               <input
               v-model="newCom.body"
               type="text"
               name="body"
               id="body"
               class="form-control"
-              placeholder="Body..."
+              placeholder="here..."
               />
           </div>
-          <button type="submit" class="btn btn-outline-primary">New Post</button>
+          <button type="submit" class="btn btn-outline-primary">Submit</button>
           </form>
     </div>
     <div v-if="coms.length > 0" class="row">
@@ -88,6 +86,7 @@ export default {
     mounted() {
     this.$store.dispatch("getBlogById", this.$route.params.id)
     this.$store.dispatch("getActiveCom", this.$route.params.id)
+    this.$store.dispatch("getProfile")
   },
   methods:{
     createCom(){

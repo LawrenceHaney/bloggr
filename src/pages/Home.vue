@@ -1,6 +1,6 @@
 <template>
-  <div class="home container-fluid">
-    <div class="row bg-dark">
+  <div class="home container-fluid background">
+    <div class="row justify-content-center">
       <blog v-for="blog in blogs" :key="blog.id" :blogData="blog" />
     </div>
   </div>
@@ -29,3 +29,6 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+</style>
